@@ -9,7 +9,7 @@ Raylib-Collision is not something like Box2D or other physics framework where yo
 
 ## How to install?
 
-Coming Soon
+`go get github.com/florianwoelki/raylib-collision`
 
 ## How to use it?
 
