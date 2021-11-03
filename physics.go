@@ -2,14 +2,16 @@ package raylibcollision
 
 import rl "github.com/gen2brain/raylib-go/raylib"
 
+// CollideWithRects is a utility function and checks whether a rectangle collided with some rectangle in the array or not.
+// It returns a hit slice that includes all the collided rectangles.
 func CollideWithRects(rect rl.Rectangle, rects []rl.Rectangle) []rl.Rectangle {
-	var hitList []rl.Rectangle
+	var hitSlice []rl.Rectangle
 	for _, rec := range rects {
 		if CollideWithRect(rect, rec) {
-			hitList = append(hitList, rec)
+			hitSlice = append(hitSlice, rec)
 		}
 	}
-	return hitList
+	return hitSlice
 }
 
 type collisionDirection struct {
@@ -19,6 +21,8 @@ type collisionDirection struct {
 	Left   bool
 }
 
+// MoveRect will handle the collision and return the direction struct, which includes boolean values of the directions.
+// The function checks the future movement whether it collided with some rectangle in the passed slice.
 func MoveRect(rect *rl.Rectangle, dx, dy float32, rects []rl.Rectangle) collisionDirection {
 	collision := collisionDirection{Top: false, Bottom: false, Right: false, Left: false}
 
